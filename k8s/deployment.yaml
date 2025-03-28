@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-mvc-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django-mvc-app
+  template:
+    metadata:
+      labels:
+        app: django-mvc-app
+    spec:
+      containers:
+      - name: django-mvc-app
+        image: localhost:5000/django-mvc-app
+        ports:
+        - containerPort: 8000
